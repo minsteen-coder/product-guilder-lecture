@@ -60,3 +60,24 @@ document.getElementById('generate-btn').addEventListener('click', () => {
         numbersContainer.appendChild(lottoBall);
     });
 });
+
+// Theme Toggle
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+        themeToggleBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        themeToggleBtn.textContent = '🌙';
+        localStorage.removeItem('theme');
+    }
+});
+
+// Check for saved theme preference
+if (localStorage.getItem('theme') === 'dark-mode') {
+    body.classList.add('dark-mode');
+    themeToggleBtn.textContent = '☀️';
+}
